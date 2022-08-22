@@ -11,9 +11,9 @@ const Person = function (firstName, birthYear) {
   // because if we create 100 Persons,
   // then we would create this method for each of them
 
-  this.calcAge = function () {
-    console.log(2022 - this.birthYear);
-  }
+//   this.calcAge = function () {
+//     console.log(2022 - this.birthYear);
+//   }
 };
 
 // 1. New {} is created
@@ -30,4 +30,25 @@ console.log(hennadii); // Person {firstName: 'Hennadii', birthYear: 1988, calcA
 console.log(pavel); // Person {firstName: 'Pavel', birthYear: 1987, calcAge: ƒ}
 
 console.log(hennadii instanceof Person); // true
+// hennadii.calcAge();  // 34
+
+// 209. Prototypes
+console.log(Person.prototype); // {constructor: ƒ}
+Person.prototype.calcAge = function() {
+  console.log(2022 - this.birthYear);
+};
 hennadii.calcAge();  // 34
+pavel.calcAge() // 35
+
+console.log(jonas.__proto__); // {calcAge: ƒ, constructor: ƒ}
+console.log(Person.prototype); // {calcAge: ƒ, constructor: ƒ}
+console.log(jonas.__proto__ === Person.prototype); // true
+console.log(Person.prototype.isPrototypeOf(jonas)); // true
+console.log(Person.prototype.isPrototypeOf(Person)); // false
+
+
+Person.prototype.species = "Homo Sapiens";
+console.log(jonas.species); // Homo Sapiens
+
+console.log(jonas.hasOwnProperty('firstName')); // true
+console.log(jonas.hasOwnProperty('species')); // false
