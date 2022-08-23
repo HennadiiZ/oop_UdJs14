@@ -180,3 +180,35 @@ const PersonProto2 = {
 const sarah = Object.create(PersonProto2);
 sarah.init('Sarah', 1979);
 sarah.calcAge(); // 43
+
+// 218. Inheritance Between "Classes": Constructor Functions
+const Person218 = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person218.prototype.calcAge = function() {
+  console.log(2022 - this.birthYear);
+};
+
+// const Student218 = function (firstName, birthYear, course) {
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
+//   this.course = course;
+// };
+
+const Student218 = function (firstName, birthYear, course) {
+  Person218.call(this, firstName, birthYear)
+  this.course = course;
+};
+
+Student218.prototype.introduce = function() {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student218("Mike", 2020, "Computer Science");
+console.log(mike); // Student218 {firstName: 'Mike', birthYear: 2020, course: 'Computer Science'}
+mike.introduce(); // My name is Mike and I study Computer Science
+
+
+
