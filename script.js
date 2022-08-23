@@ -143,3 +143,7 @@ class PersonCl2 {
 const jessica2 = new PersonCl2('Jessica2 Davis', 1997);
 console.log(jessica2.age); //25
 
+// 215. Static Methods
+
+Array.from(document.querySelector('h1'));
+console.log(Array.from(document.querySelector('h1'))) // []
