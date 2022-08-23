@@ -202,6 +202,9 @@ const Student218 = function (firstName, birthYear, course) {
   this.course = course;
 };
 
+// Linking prototypes
+Student218.prototype = Object.create(Student218.prototype);
+
 Student218.prototype.introduce = function() {
   console.log(`My name is ${this.firstName} and I study ${this.course}`);
 };
@@ -210,5 +213,13 @@ const mike = new Student218("Mike", 2020, "Computer Science");
 console.log(mike); // Student218 {firstName: 'Mike', birthYear: 2020, course: 'Computer Science'}
 mike.introduce(); // My name is Mike and I study Computer Science
 
+console.log(mike.__proto__);  // Student218 {introduce: ƒ}
+console.log(mike.__proto__.__proto__); // {constructor: ƒ}
+console.log(mike.__proto__.__proto__.__proto__);
 
+console.log(mike instanceof Student218); // true
+console.log(mike instanceof Person218); // false
 
+console.dir(Student218.prototype.constructor); // ƒ Student218(firstName, birthYear, course)
+Student218.prototype.constructor = Student218;
+console.dir(Student218.prototype.constructor); // ƒ Student218(firstName, birthYear, course)
