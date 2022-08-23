@@ -90,3 +90,56 @@ class PersonCl {
 const jessica = new PersonCl('Jessica', 1996);
 console.log(jessica); // PersonCl {firstName: 'Jessica', birthYear: 1996}
 
+// 214. Setters and Getters
+
+const account = {
+  owner: 'Jonas',
+  movements: [200, 540, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  }
+}
+
+console.log(account.latest); //300
+
+account.latest = 50;
+console.log(account.movements); //[200, 540, 120, 300, 50]
+console.log(account.latest); //50 
+
+//
+class PersonCl2 {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+ 
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  }
+
+  get age() {
+    return 2022 - this.birthYear;
+  }
+
+  set fullName(name) {
+    console.log(name); // Jessica2 Davis
+    if (name.includes(' ')) {
+      this._fullName = name;
+    } else {
+      alert(`${name} is not a full name!`)
+    }
+  }
+
+  getFullName() {
+    return this._fullName;
+  }
+}
+
+const jessica2 = new PersonCl2('Jessica2 Davis', 1997);
+console.log(jessica2.age); //25
+
