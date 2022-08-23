@@ -52,3 +52,18 @@ console.log(jonas.species); // Homo Sapiens
 
 console.log(jonas.hasOwnProperty('firstName')); // true
 console.log(jonas.hasOwnProperty('species')); // false
+
+// 210. Prototypal Inheritance and The Prototype Chain
+// 211. Prototypal Inheritance on Built-In Objects
+console.log(jonas.__proto__); // {species: 'Homo Sapiens', calcAge: ƒ, constructor: ƒ}
+console.log(jonas.__proto__.__proto__); // {constructor: ƒ, __defineGetter__: ƒ, __defineSetter__: ƒ, hasOwnProperty: ƒ, __lookupGetter__: ƒ, …}
+
+
+const arr = [3, 3, 7, 8, 8, 18, 11, 13, 13, 13];
+console.log(arr.__proto__ === Array.prototype); // true
+
+Array.prototype.unique = function () { // my own method for all arrays
+  return [...new Set(this)];
+};
+
+console.log(arr.unique()); // [3, 7, 8, 18, 11, 13]
