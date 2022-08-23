@@ -147,3 +147,22 @@ console.log(jessica2.age); //25
 
 Array.from(document.querySelector('h1'));
 console.log(Array.from(document.querySelector('h1'))) // []
+
+// 216. Object.create
+const PersonProto = {
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  }
+}
+
+const steven = Object.create(PersonProto);
+console.log(steven); // {} empty , with calcAge in prototype
+steven.calcAge(); // NaN
+
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge(); // 20
+
+console.log(steven.__proto__); // {calcAge: ƒ} - exactly  PersonProto
+console.log(steven.__proto__ === PersonProto); // true
+
