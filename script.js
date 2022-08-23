@@ -166,3 +166,17 @@ steven.calcAge(); // 20
 console.log(steven.__proto__); // {calcAge: ƒ} - exactly  PersonProto
 console.log(steven.__proto__ === PersonProto); // true
 
+//----
+const PersonProto2 = {
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+}
+const sarah = Object.create(PersonProto2);
+sarah.init('Sarah', 1979);
+sarah.calcAge(); // 43
