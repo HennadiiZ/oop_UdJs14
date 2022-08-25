@@ -255,3 +255,28 @@ const marta = new StudentCl_('Marta Marta', 2012, 'Computer Science');
 console.log(marta); // StudentCl_ {firstName: 'Marta Marta', birthYear: 2012} - this is without super
 marta.introduce();
 marta.calcAge();
+
+// 221. Inheritance Between "Classes": Object.create
+const PersonProto3 = {
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+}
+const stevens = Object.create(PersonProto3);
+
+const StudentProto3 = Object.create(PersonProto3);
+StudentProto3.init = function(firstName, birthYear, course) {
+  PersonProto3.init.call(this, firstName, birthYear);
+  this.course = course;
+}
+StudentProto3.introduce = function() {
+  console.log(this.fulltName, this.course);
+}
+const jay = Object.create(StudentProto3);
+jay.init('jay', 2010, 'Comp sci');
+jay.introduce();
