@@ -223,3 +223,35 @@ console.log(mike instanceof Person218); // false
 console.dir(Student218.prototype.constructor); // ƒ Student218(firstName, birthYear, course)
 Student218.prototype.constructor = Student218;
 console.dir(Student218.prototype.constructor); // ƒ Student218(firstName, birthYear, course)
+
+
+// 220. Inheritance Between "Classes": ES6 Classes
+
+class PersonCl_ {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+ 
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  }
+}
+
+class StudentCl_ extends PersonCl_ {
+  constructor(fulltName, birthYear, course) {
+    super(fulltName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(this.fulltName, this.course);
+  }
+}
+
+// const marta = new StudentCl_('Marta Marta', 2012);
+const marta = new StudentCl_('Marta Marta', 2012, 'Computer Science');
+console.log(marta); // StudentCl_ {firstName: 'Marta Marta', birthYear: 2012} - this is without super
+marta.introduce();
+marta.calcAge();
