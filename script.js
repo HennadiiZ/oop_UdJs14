@@ -280,3 +280,10 @@ StudentProto3.introduce = function() {
 const jay = Object.create(StudentProto3);
 jay.init('jay', 2010, 'Comp sci');
 jay.introduce();
+
+// 222. Another Class Example
+// 223. Encapsulation: Protected Properties and Methods
+// 224. Encapsulation: Private Class Fields and Methods
+// 225. Chaining Methods
+// 226. ES6 Classes Summary
+// 
